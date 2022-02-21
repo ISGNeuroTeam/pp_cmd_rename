@@ -8,7 +8,10 @@ class RenameCommand(BaseCommand):
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         cols = self.get_arg('col')
         df.rename(
-            {initial_name.value: initial_name.named_as for initial_name in cols}
+            {initial_name.value: initial_name.named_as for initial_name in cols},
+            axis=1,
+            inplace=True,
+            errors='raise'
         )
 
         return df
