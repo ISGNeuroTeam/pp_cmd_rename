@@ -1,9 +1,10 @@
-from pp_exec_env.base_command import BaseCommand, Syntax, Rule, pd
+import pandas as pd
+from otlang.sdk.syntax import Positional, OTLType
+from pp_exec_env.base_command import BaseCommand, Syntax
 
 
 class RenameCommand(BaseCommand):
-    syntax = Syntax([Rule(name="col", type="arg", input_types=['string', 'term'], inf=True, )],  # must_be_a_field=True
-                    use_timewindow=False)
+    syntax = Syntax([Positional("col", otl_type=OTLType.TEXT, inf=True)], use_timewindow=False)
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         cols = self.get_iter('col')
