@@ -4,7 +4,7 @@ from pp_exec_env.base_command import BaseCommand, Syntax
 
 
 class RenameCommand(BaseCommand):
-    syntax = Syntax([Positional("col", otl_type=OTLType.TEXT, inf=True)], use_timewindow=False)
+    syntax = Syntax([Positional("col", otl_type=OTLType.TEXT, inf=True)])
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         cols = self.get_iter('col')
