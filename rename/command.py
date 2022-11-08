@@ -8,6 +8,10 @@ class RenameCommand(BaseCommand):
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         cols = self.get_iter('col')
+
+        # dataframe can be changed, so if columns disappears no need for exception
+        cols = filter(lambda x: x.value in df.columns, cols)
+
         df.rename(
             {initial_name.value: initial_name.named_as for initial_name in cols},
             axis=1,
