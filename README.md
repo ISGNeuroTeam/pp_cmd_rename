@@ -63,3 +63,5 @@ query: | otl_v1 <# makeresults count=100 #> |  rename _time as Time
 ```
 ## Deploy
  Unpack archive `pp_cmd_rename` to postprocessing commands directory
+ ## Test
+Use `make test` and all test will run in Docker container. Please turn the vpn on so all the OTL dependencies would download.
